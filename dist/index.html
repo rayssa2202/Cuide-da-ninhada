@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuide da Ninhada - Jogo Educativo</title>
+  <script type="module" crossorigin src="/assets/index-IAwazedm.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DALPSP8-.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <!-- ETAPA 0: Menu Inicial -->
+        <div class="screen active menu-screen" id="menu">
+            <div class="logo">🐕 CUIDE DA NINHADA 🐕</div>
+            <div class="subtitle">Jogo Educativo sobre Hipocalcemia</div>
+            <div class="menu-buttons">
+                <button class="pixel-btn" onclick="goToStep(1)">🎮 COMEÇAR JOGO</button>
+                <button class="pixel-btn" onclick="showInfo()">❓ SOBRE O JOGO</button>
+                <button class="pixel-btn" onclick="showCredits()">⭐ CRÉDITOS</button>
+            </div>
+        </div>
+
+        <!-- ETAPA 1: Escolha do Personagem -->
+        <div class="screen character-screen" id="step1">
+            <div class="character-title">🐕 Escolha sua Cadela 🐕</div>
+            <div class="name-input">
+                <label>💝 Nome da sua cadela:</label><br>
+                <div>
+                    <input type="text" id="dogName" placeholder="Digite um nome carinhoso..." maxlength="15">
+                    <button onclick="randomName()">🎲</button>
+                </div>
+            </div>
+            <div class="character-options">
+                <div class="character-card" onclick="selectCharacter('small', 'Pincher')">
+                    <div class="dog-sprite" style="background: linear-gradient(135deg, #8B4513, #A0522D);">🐕</div>
+                    <div class="character-info">
+                        <h3>Pincher</h3>
+                        <p><strong>Porte Pequeno</strong></p>
+                        <p>🏠 Ambiente: Kitnet</p>
+                    </div>
+                </div>
+                <div class="character-card" onclick="selectCharacter('medium', 'Caramelo')">
+                    <div class="dog-sprite" style="background: linear-gradient(135deg, #D2691E, #CD853F);">🐕</div>
+                    <div class="character-info">
+                        <h3>Caramelo</h3>
+                        <p><strong>Porte Médio</strong></p>
+                        <p>🏡 Ambiente: Casa com quintal</p>
+                    </div>
+                </div>
+                <div class="character-card" onclick="selectCharacter('large', 'Pastor Alemão')">
+                    <div class="dog-sprite" style="background: linear-gradient(135deg, #654321, #8B4513);">🐕</div>
+                    <div class="character-info">
+                        <h3>Pastor Alemão</h3>
+                        <p><strong>Porte Grande</strong></p>
+                        <p>🏢 Ambiente: Apartamento</p>
+                    </div>
+                </div>
+            </div>
+            <button class="pixel-btn" onclick="completeStep1()" style="margin-top: 30px;">➡️ PRÓXIMA ETAPA</button>
+        </div>
+
+        <!-- ETAPA 2: Informação sobre Hipocalcemia -->
+        <div class="screen info-screen" id="step2">
+            <div class="info-title">Conhecendo a Hipocalcemia</div>
+            <div class="info-content">
+                <p><strong>🔬 O que é Hipocalcemia?</strong></p>
+                <p>A hipocalcemia é a diminuição perigosa dos níveis de cálcio no sangue. Em cadelas grávidas, isso pode
+                    causar sérios problemas:</p>
+                <ul>
+                    <li>🔸 <strong>Tremores e espasmos musculares</strong></li>
+                    <li>🔸 <strong>Fraqueza extrema e letargia</strong></li>
+                    <li>🔸 <strong>Dificuldade para caminhar</strong></li>
+                    <li>🔸 <strong>Respiração ofegante e acelerada</strong></li>
+                    <li>🔸 <strong>Perda total de apetite</strong></li>
+                    <li>🔸 <strong>Convulsões (casos graves)</strong></li>
+                </ul>
+                <p><strong>🤰 Por que acontece na gravidez?</strong></p>
+                <p>Durante a gestação, os filhotes em desenvolvimento precisam de enormes quantidades de cálcio para
+                    formar seus ossos e dentes, "roubando" literalmente o cálcio da mãe através da placenta.</p>
+                <p><strong>⚡ Sua missão:</strong> Ajudar <span id="selectedDogName">sua cadela</span> a recuperar os
+                    níveis normais de cálcio!</p>
+            </div>
+            <button class="pixel-btn" onclick="goToStep(3)">🚀 PRÓXIMA ETAPA</button>
+        </div>
+
+        <!-- ETAPA 3: Jornada Interativa -->
+        <div class="screen story-screen" id="step3">
+            <div class="story-engine">
+                <h2 class="story-title" id="storyPhaseTitle"></h2>
+                <div class="story-phase-intro" id="storyPhaseIntro"></div>
+
+                <div class="story-progress" id="storyProgress"></div>
+
+                <div class="story-decision">
+                    <h3 class="story-decision-title" id="storyDecisionTitle"></h3>
+                    <p class="story-decision-description" id="storyDecisionDescription"></p>
+                </div>
+
+                <div class="story-options" id="storyOptions" role="list"></div>
+
+                <div class="story-feedback-container" id="storyFeedback" aria-live="polite"></div>
+
+                <div class="story-navigation">
+                    <button class="pixel-btn" id="storyNextButton" disabled>Próxima etapa</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 4: Desfecho -->
+        <div class="screen story-screen" id="step4">
+            <div class="story-ending">
+                <h2 class="story-title" id="storyEndingTitle"></h2>
+
+                <div class="story-ending-highlight" id="storyEndingHighlight"></div>
+
+                <div class="story-ending-details" id="storyEndingDetails"></div>
+
+                <div class="story-ending-stats" id="storyEndingStats"></div>
+
+                <div class="story-ending-tree">
+                    <h3>⚖️ Árvore de Decisões Simplificada</h3>
+                    <pre>INÍCIO
+ ├── Fase 1 (Hipocalcemia)
+ │     ├── Errou 2+ respostas → +20% risco
+ │     └── Acertou ≥3 → -20% risco
+ │
+ ├── Fase 2 (Gestação)
+ │     ├── Suplementou cálcio cedo → ativa risco 1
+ │     ├── Dieta errada → ativa risco 2
+ │     └── Acompanhamento correto → remove risco
+ │
+ ├── Fase 3 (Pós-Parto)
+ │     ├── Ignorou sinais → vai pro final trágico
+ │     ├── Tratou sem manejo filhotes → final parcial
+ │     └── Seguiu protocolo completo → final feliz
+ │
+ └── FASE FINAL → Exibe o desfecho</pre>
+                </div>
+
+                <div class="story-navigation">
+                    <button class="pixel-btn" onclick="goToStep(0)">🔄 Voltar ao Menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
