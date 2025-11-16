@@ -1,15 +1,25 @@
 {
   "name": "cuide-da-ninhada",
-  "private": true,
   "version": "0.0.1",
-  "type": "module",
+  "private": true,
+  "description": "Missão Cálcio - jogo educativo sobre hipocalcemia em cadelas grávidas e lactantes.",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "16.0.3",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
-    "typescript": "^5.9.3",
-    "vite": "^7.1.9"
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.3",
+    "typescript": "^5"
   }
 }
