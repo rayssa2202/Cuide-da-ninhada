@@ -6,24 +6,33 @@ export default function CreditsPage() {
   return (
     <main className="game-container">
       <section className="screen info-screen active">
-        <h2 className="info-title">Créditos</h2>
+        <h2 className="info-title">CRÉDITOS — MISSÃO CÁLCIO: SALVANDO A CADELA</h2>
         <div className="info-content">
           <p>
-            ?? Jogo Educativo Cuide da Ninhada
+            <strong>PRODUÇÃO ACADÊMICA</strong>
             <br />
-            Desenvolvido para conscientização sobre hipocalcemia em cadelas grávidas e lactantes.
+            Projeto desenvolvido para a disciplina de Mecanismos Morfofisiológicos da Medicina Veterinária.
           </p>
           <p>
-            ?? Design: Pixel art interativo
+            <strong>PROFESSORA ORIENTADORA</strong>
             <br />
-            ?? Conteúdo: enriquecido com conhecimento veterinário real
+            Carla Caroline Franzini de Souza
           </p>
-          <p>?? Objetivo: educação, prevenção e cuidado responsável para cadelas e filhotes.</p>
-          <p>&quot;A prevenção é o melhor remédio!&quot;</p>
+          <p>
+            <strong>EQUIPE DE DESENVOLVIMENTO</strong>
+          </p>
+          <ul>
+            <li>Juliana Correia dos Santos</li>
+            <li>Juliana de Carvalho Julianelli Lopes</li>
+            <li>Juliana dos Santos Pereira</li>
+            <li>Rayssa Barboza Rodrigues</li>
+            <li>Vitor Hugor Souza Vicente</li>
+            <li>Yasmim Dantas da Silva</li>
+          </ul>
         </div>
         <div className="story-navigation">
           <Link href="/" className="pixel-btn">
-            ← Voltar ao Menu
+            ↶ Voltar ao Menu
           </Link>
         </div>
       </section>

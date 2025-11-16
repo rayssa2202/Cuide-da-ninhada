@@ -77,9 +77,6 @@ export default function EndingPage() {
               <strong>Decisões corretas:</strong> {state.storyStats.totalCorrect} /{' '}
               {state.storyStats.totalDecisions}
             </div>
-            <div>
-              <strong>Erros graves:</strong> {state.storyStats.majorMistakes}
-            </div>
           </div>
           <Link href="/" className="pixel-btn" style={{padding: 0, marginTop: 15}} onClick={() => resetGame()}>
               Voltar ao Menu
