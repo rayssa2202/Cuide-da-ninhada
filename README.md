@@ -1,23 +1,19 @@
-# Cuide da Ninhada — Vite + TypeScript
+# Cuide da Ninhada
 
-Projeto convertido do HTML original para um app com Vite + TypeScript.
+Missão Cálcio é uma experiência educativa construída com Next.js + TypeScript para guiar o jogador pelas etapas de conscientização e resposta à hipocalcemia em cadelas grávidas.
 
-## Rodar localmente
+## Estrutura principal
 
-```bash
-npm install
-npm run dev
-```
+- `app/`: rotas do jogo (menu, escolha do personagem, informação, jornada e desfecho).
+- `contexts/GameContext.tsx`: mantém o estado compartilhado sem acessar o DOM.
+- `data/`: conteúdo reutilizável (`femaleNames.json`, `storyData.ts`), enquanto `legacy-Data/` preserva o texto bruto original.
+- `app/globals.css`: importa o visual pixelado da versão anterior.
 
-## Build de produção
+## Scripts úteis
 
-```bash
-npm run build
-npm run preview
-```
+- `npm run dev`: inicia o servidor de desenvolvimento.
+- `npm run build`: gera o build para produção.
+- `npm run start`: executa o build compilado.
+- `npm run lint`: valida o código com ESLint.
 
-O HTML original foi separado em:
-
-- `src/style.css` — estilos extraídos do `<style>`
-- `src/main.ts` — scripts extraídos do `<script>` e tipados
-- `index.html` — marcação HTML limpa e referenciando os arquivos acima
+Abra [http://localhost:3000](http://localhost:3000) para experimentar.
