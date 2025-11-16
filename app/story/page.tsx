@@ -133,7 +133,12 @@ export default function StoryPage() {
           <div className="story-progress">{progressText}</div>
 
           <div className="story-decision">
-            <h3 className="story-decision-title">{withDogName(currentDecision.title + " ?", dogName)}</h3>
+            <h3 className="story-decision-title">{withDogName(currentDecision.title, dogName)}</h3>
+            {
+              currentDecision.question && (
+                <p className="story-decision-description">{withDogName(currentDecision.question, dogName)}</p>
+              )
+            }
           </div>
 
           <div className="story-options" role="list">

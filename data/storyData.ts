@@ -4,7 +4,7 @@ const fase1Decisions: StoryDecision[] = [
   {
     id: 'fase1-q1',
     title: "Pergunta 1 - Função que o cálcio não realiza",
-    question: "Função que o cálcio não realiza",
+    question: "O cálcio é essencial para várias funções do corpo. Qual dessas funções ele não realiza?",
     options: [
       {
         text: "A) Contração muscular",
@@ -35,7 +35,7 @@ const fase1Decisions: StoryDecision[] = [
   {
     id: 'fase1-q2',
     title: "Pergunta 2 - Hormônio liberado quando Ca²⁺ sérico cai",
-    question: "Hormônio liberado quando Ca²⁺ sérico cai",
+    question: "Quando os níveis de cálcio caem no sangue, qual hormônio é liberado para restabelecer o equilíbrio?",
     options: [
       {
         text: "A) PTH",
@@ -66,7 +66,7 @@ const fase1Decisions: StoryDecision[] = [
   {
     id: 'fase1-q3',
     title: "Pergunta 3 - Onde o PTH estimula ativação da vitamina D",
-    question: "Onde o PTH estimula ativação da vitamina D",
+    question: "O PTH atua, entre outras coisas, estimulando a ativação da vitamina D. Onde isso acontece?",
     options: [
       {
         text: "A) Pâncreas e estômago",
@@ -96,17 +96,17 @@ const fase1Decisions: StoryDecision[] = [
   },
   {
     id: 'fase1-q4',
-    title: "Pergunta 4 - Por que o cálcio é importante nas enzimas",
-    question: "Por que o cálcio é importante nas enzimas",
+    title: "Pergunta 4 - Por que o cálcio é importante para as enzimas",
+    question: "Por que o cálcio é importante para o funcionamento das enzimas do nosso corpo?",
     options: [
       {
-        text: "A) Porque ele dá energia",
+        text: "A) Porque ele dá energia para as reações químicas acontecerem",
         feedback: "Feedback: •\tEnergia química para reações vem de ATP (e gradientes eletroquímicos). Ca²⁺ não é fonte de energia.",
         tone: 'warning',
         outcome: 'bad',
       },
       {
-        text: "B) Ajuda as enzimas a funcionarem {{dogName}}hor e ficarem estáveis",
+        text: "B) Porque ele ajuda as enzimas a funcionarem melhor e ficarem estáveis",
         feedback: "Feedback: Correto!\nMecanismo real:\n•\tCa²⁺ pode atuar como cofator (liga-se ao sítio ativo ou a domínios estruturais como EF-hand), alterando conformação e estabilidade da enzima — assim regula atividade enzimática.",
         tone: 'success',
         outcome: 'best',
@@ -131,10 +131,10 @@ const fase2Decisions: StoryDecision[] = [
   {
     id: 'fase2-q5',
     title: "Pergunta 5 - Importância do cálcio na gestação",
-    question: "Importância do cálcio na gestação",
+    question: "Durante a gestação, o cálcio é importante principalmente para:",
     options: [
       {
-        text: "A) Produção de leite",
+        text: "A) A produção de leite",
         feedback: "Feedback: •\tLactogênese e produção de leite ocorrem principalmente pós-parto, sob influência de prolactina e hormônios ligados ao parto; a gestação concentra-se em crescimento fetal e mineralização esquelética.",
         tone: 'warning',
         outcome: 'bad',
@@ -152,7 +152,7 @@ const fase2Decisions: StoryDecision[] = [
         outcome: 'bad',
       },
       {
-        text: "D) Digestão de proteínas",
+        text: "D) A digestão de proteínas",
         feedback: "Feedback: •\tProteólise digestiva depende de pepsina, proteases pancreáticas; cálcio não é enzima digestiva.",
         tone: 'warning',
         outcome: 'bad',
@@ -162,7 +162,7 @@ const fase2Decisions: StoryDecision[] = [
   {
     id: 'fase2-q6',
     title: "Pergunta 6 - Resposta do organismo ao aumento da demanda de Ca²⁺ na gestação",
-    question: "Resposta do organismo ao aumento da demanda de Ca²⁺ na gestação",
+    question: "Com o aumento da demanda de cálcio na gestação, o organismo da cadela responde:",
     options: [
       {
         text: "A) Diminuir o PTH",
@@ -193,7 +193,7 @@ const fase2Decisions: StoryDecision[] = [
   {
     id: 'fase2-q7',
     title: "Pergunta 7 - Microbiota intestinal e absorção de cálcio",
-    question: "Microbiota intestinal e absorção de cálcio",
+    question: "A microbiota intestinal participa desse processo porque:",
     options: [
       {
         text: "A) Facilita a absorção de cálcio ao equilibrar o pH intestinal",
@@ -224,7 +224,7 @@ const fase2Decisions: StoryDecision[] = [
   {
     id: 'fase2-q8',
     title: "Pergunta 8 - Principal reserva de cálcio",
-    question: "Principal reserva de cálcio",
+    question: "Qual é a principal reserva de cálcio do corpo que pode ser utilizada durante a gestação?",
     options: [
       {
         text: "A) Fígado",
@@ -255,34 +255,34 @@ const fase2Decisions: StoryDecision[] = [
   {
     id: 'fase2-q9',
     title: "Pergunta 9 - Conduta correta sobre ração/suplementos",
-    question: "Conduta correta sobre ração/suplementos",
+    question: "Qual das alternativas descreve a conduta correta em relação à alimentação e suplementação de cálcio em cadelas gestantes?",
     options: [
       {
-        text: "A) Oferecer ração de filhotes apenas após o parto e suplementar cálcio indiscriminadamente pode causar hipercalcemia ou suprimir a atividade das paratireoides, levando a risco de disfunção quando a demanda real surgir.",
+        text: "A) A ração de filhotes deve ser oferecida apenas após o parto, junto com suplementação de cálcio diária.",
         feedback: "Feedback: Oferecer ração de filhotes apenas após o parto e suplementar cálcio indiscriminadamente pode causar hipercalcemia ou suprimir a atividade das paratireoides, levando a risco de disfunção quando a demanda real surgir.",
         tone: 'warning',
         outcome: 'bad',
       },
       {
-        text: "B) (introdução gradual da ração de filhotes a partir da metade, sem suplementação desnecessária)",
+        text: "B) A ração de filhotes pode ser introduzida gradualmente a partir da metade da gestação, sem necessidade de suplementação de cálcio, exceto sob orientação veterinária.",
         feedback: "Feedback: Correto!\nMecanismo chave: suplementação excessiva pré-parto pode diminuir a sensibilidade do paratireoide (feedback negativo) → após parto, quando a demanda por leite aumenta, o organismo pode estar menos capaz de responder rapidamente → eclâmpsia puerperal.",
         tone: 'success',
         outcome: 'best',
       },
       {
-        text: "C) Usar ração de filhotes desde a cópula sem ajustar conforme número de fetos e idades pode superestimar necessidades e tornar suplementação desnecessária; suplementar só no final sem critério também arrisca desequilíbrios.",
+        text: "C) A alimentação deve ser ajustada de acordo com a idade e o número de fetos, usando ração de filhotes desde a cópula, mas a suplementação de cálcio só deve ocorrer no final da gestação ou quando houver indicação clínica.",
         feedback: "Feedback: Usar ração de filhotes desde a cópula sem ajustar conforme número de fetos e idades pode superestimar necessidades e tornar suplementação desnecessária; suplementar só no final sem critério também arrisca desequilíbrios.",
         tone: 'warning',
         outcome: 'bad',
       },
       {
-        text: "D) Manter ração de manutenção e iniciar suplementação logo após a cópula pode expor a cadela a excesso de cálcio (prejudicial) e interferir no ajuste fisiológico do PTH/Vit D.",
+        text: "D) Deve-se manter a mesma ração de manutenção durante toda a gestação e iniciar suplementação de cálcio logo após a cópula.",
         feedback: "Feedback: Manter ração de manutenção e iniciar suplementação logo após a cópula pode expor a cadela a excesso de cálcio (prejudicial) e interferir no ajuste fisiológico do PTH/Vit D.",
         tone: 'warning',
         outcome: 'bad',
       },
       {
-        text: "E) Aumentar cálcio desde o início sem avaliação causa risco de supressão adaptativa do PTH e redução da capacidade de mobilizar cálcio quando necessário",
+        text: "E) É indicado oferecer ração comum e aumentar o cálcio desde o início da prenhez para evitar hipocalcemia.",
         feedback: "Feedback: Aumentar cálcio desde o início sem avaliação causa risco de supressão adaptativa do PTH e redução da capacidade de mobilizar cálcio quando necessário",
         tone: 'warning',
         outcome: 'bad',
@@ -295,28 +295,28 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q10',
     title: "Pergunta 10 - Cálcio e secreção do leite",
-    question: "Cálcio e secreção do leite",
+    question: "O cálcio é fundamental na secreção do leite porque:",
     options: [
       {
-        text: "A) Diminui a absorção intestinal",
+        text: "A) Diminui a absorção intestinal durante a lactação",
         feedback: "Feedback: •\tLactação aumenta necessidade e geralmente manutenção/↑ absorção; cálcio não diminui absorção intestinal.",
         tone: 'warning',
         outcome: 'bad',
       },
       {
-        text: "B) Atua diretamente na produção de hormônios ovarianos",
+        text: "B) Atua diretamente na produção dos hormônios ovarianos",
         feedback: "Feedback: •\tProdução de hormônios ovarianos (estrogênio/progesterona) é regulada pelo eixo hipotálamo-hipófise-ovário, não diretamente pelo Ca²⁺.",
         tone: 'warning',
         outcome: 'bad',
       },
       {
-        text: "C) Essencial para ação da ocitocina e ejeção do leite",
+        text: "C) É essencial para a ação da ocitocina, que promove a contração das células mamárias e a ejeção do leite",
         feedback: "Feedback: Correto!\nMecanismo correto (por que C está certa, detalhado):\n•\tOxitocina se liga a receptores acoplados à proteína G nas células mioepiteliais → ativa fosfolipase C (PLC) → gera IP₃ → IP₃ promove liberação de Ca²⁺ do retículo → aumento do Ca²⁺ intracelular causa contração das mioepitélias ao redor dos alvéolos → ejeção do leite. Assim, o Ca²⁺ intracelular é necessário para a contratilidade induzida por oxitocina.",
         tone: 'success',
         outcome: 'best',
       },
       {
-        text: "D) Controla volume sanguíneo mamário",
+        text: "D) Controla o volume de sangue que chega às glândulas mamárias",
         feedback: "Feedback: •\tFluxo sanguíneo local é controlado por fatores vasculares e hormonais (prolactina, estrogênios) e demanda metabólica; Ca²⁺ não “controla” esse volume.",
         tone: 'warning',
         outcome: 'bad',
@@ -326,7 +326,7 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q11',
     title: "Pergunta 11 - Hormônio que reduz o cálcio no sangue",
-    question: "Hormônio que reduz o cálcio no sangue",
+    question: "Qual hormônio reduz o cálcio no sangue, favorecendo o depósito nos ossos?",
     options: [
       {
         text: "A) PTH",
@@ -357,22 +357,22 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q12',
     title: "Pergunta 12 - PTH e vitamina D ativa durante lactação",
-    question: "PTH e vitamina D ativa durante lactação",
+    question: "Durante a lactação, o PTH e a vitamina D ativa trabalham juntos para:",
     options: [
       {
-        text: "A) Reduzir Ca²⁺",
+        text: "A) Reduzir o cálcio sanguíneo",
         feedback: "Feedback: •\tAmbos agem para elevar Ca²⁺ sérico quando necessário.",
         tone: 'warning',
         outcome: 'bad',
       },
       {
-        text: "B) Aumentar liberação de Ca²⁺ dos ossos e absorção intestinal",
+        text: "B) Aumentar a liberação de cálcio dos ossos e absorção intestinal",
         feedback: "Feedback: Correto!\nMecanismo detalhado:\n•\tPTH → mobiliza Ca²⁺ do osso (estimula osteoclastogênese via RANKL) e aumenta 1α-hidroxilase → ↑ calcitriol → ↑ absorção intestinal via canais e proteínas transportadoras; durante lactação esses mecanismos contribuem para suprir secreção de Ca²⁺ no leite.",
         tone: 'success',
         outcome: 'best',
       },
       {
-        text: "C) Inibir função renal",
+        text: "C) Inibir a função renal",
         feedback: "Feedback: •\tPTH aumenta reabsorção de Ca²⁺ no rim; não inibe função renal global como estratégia para conservar Ca²⁺.",
         tone: 'warning',
         outcome: 'bad',
@@ -388,7 +388,7 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q13',
     title: "Pergunta 13 - Por que a falta de cálcio afeta metabolismo (resposta A)",
-    question: "Por que a falta de cálcio afeta metabolismo (resposta A)",
+    question: "A falta de cálcio nessa fase pode afetar o metabolismo porque o cálcio participa de:",
     options: [
       {
         text: "A) Processos de respiração celular e ativação de enzimas mitocondriais",
@@ -419,7 +419,7 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q14',
     title: "Pergunta 14 - Tremores e convulsões por hipocalcemia",
-    question: "Tremores e convulsões por hipocalcemia",
+    question: "A hipocalcemia pode causar tremores musculares e convulsões porque o cálcio é essencial para:",
     options: [
       {
         text: "A) Aumentar a pressão arterial",
@@ -450,28 +450,28 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q15',
     title: "Pergunta 15 - Eclâmpsia puerperal — o que está acontecendo",
-    question: "Eclâmpsia puerperal — o que está acontecendo",
+    question: "Se {{dogName}} apresentar sinais de eclâmpsia (hipocalcemia puerperal), o que está acontecendo no corpo dela?",
     options: [
       {
-        text: "A) Cálcio desviado para o leite → queda no sangue",
+        text: "A) O cálcio está sendo desviado para o leite, reduzindo o cálcio no sangue",
         feedback: "Feedback: Correto!\nMecanismo clínico:\n•\tNa lactação intensa, grandes quantidades de Ca²⁺ vão para o leite. Se absorção intestinal e repositórios ósseos não compensam de forma rápida, o Ca²⁺ sérico cai, levando a sinais neuromusculares e possível colapso.",
         tone: 'success',
         outcome: 'best',
       },
       {
-        text: "B) Cálcio acumulando no sangue",
+        text: "B) O cálcio está se acumulando no sangue em excesso",
         feedback: "Feedback: •\tEclâmpsia é hipocalcemia, não hipercalcemia.",
         tone: 'warning',
         outcome: 'bad',
       },
       {
-        text: "C) Corpo produz cálcio em excesso",
+        text: "C) O corpo está produzindo cálcio em excesso",
         feedback: "Feedback: •\tCorpo não sintetiza cálcio; depende de absorção e liberação óssea.",
         tone: 'warning',
         outcome: 'bad',
       },
       {
-        text: "D) Ossos impedindo liberação",
+        text: "D) Os ossos estão impedindo a liberação de cálcio",
         feedback: "Feedback: •\tA falha é, na maioria das vezes, incapacidade de suprir demanda para produção de leite — ossos podem ser mobilizados, mas se o ajuste é lento/insuficiente, S-Ca²⁺ cai.",
         tone: 'warning',
         outcome: 'bad',
@@ -481,28 +481,28 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q16',
     title: "Pergunta 16 - Microbiota na lactação",
-    question: "Microbiota na lactação",
+    question: "No período de lactação, a microbiota intestinal continua importante porque:",
     options: [
       {
-        text: "A) Produz substâncias que ajudam absorção de minerais",
+        text: "A) Produz substâncias que ajudam na absorção de minerais, como cálcio e magnésio",
         feedback: "Feedback: Correto!\nMecanismo detalhado:\n•\tMetabólitos microbianos (SCFAs) alteram pH e favorecem solubilidade iônica; além disso, microbiota pode modular expressão de canais transportadores e a saúde da mucosa intestinal, beneficiando absorção de Ca²⁺ e Mg²⁺.",
         tone: 'success',
         outcome: 'best',
       },
       {
-        text: "B) Bloqueia cálcio do leite",
+        text: "B) Bloqueia o cálcio do leite",
         feedback: "Feedback: •\tMicrobiota não “bloqueia” seletivamente o cálcio do leite.",
         tone: 'warning',
         outcome: 'bad',
       },
       {
-        text: "C) Reduz PTH circulante",
+        text: "C) Reduz o PTH circulante",
         feedback: "Feedback: •\tA regulação do PTH depende do CaSR e do Ca²⁺ sérico; microbiota pode modular absorção, mas não suprimir PTH diretamente.",
         tone: 'warning',
         outcome: 'bad',
       },
       {
-        text: "D) Impede absorção de gordura",
+        text: "D) Impede a absorção de gordura",
         feedback: "Feedback: •\tMicrobiota pode influenciar metabolismo lipídico, mas “impedir” não é sua função principal no contexto de absorção mineral.",
         tone: 'warning',
         outcome: 'bad',
@@ -512,10 +512,10 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q17',
     title: "Pergunta 17 - Consequência de dieta pobre em cálcio na lactação",
-    question: "Consequência de dieta pobre em cálcio na lactação",
+    question: "Se a alimentação de {{dogName}} for pobre em cálcio durante a lactação, qual consequência metabólica pode ocorrer?",
     options: [
       {
-        text: "A) Desgaste ósseo acelerado",
+        text: "A) Desgaste ósseo acelerado (mobilização exagerada das reservas ósseas)",
         feedback: "Feedback: Correto!\nMecanismo:\n•\tDéficit → ↑ PTH → mobilização de Ca²⁺ do osso → perda mineral e fragilidade óssea (osteopenia/osteoporose se crônico).",
         tone: 'success',
         outcome: 'best',
@@ -543,7 +543,7 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q18',
     title: "Pergunta 18 - Prevenção da hipocalcemia",
-    question: "Prevenção da hipocalcemia",
+    question: "Para prevenir a hipocalcemia durante a amamentação, é importante:",
     options: [
       {
         text: "A) Garantir suplementação adequada de cálcio e vitamina D",
@@ -552,7 +552,7 @@ const fase3Decisions: StoryDecision[] = [
         outcome: 'best',
       },
       {
-        text: "B) Diminuir proteínas",
+        text: "B) Diminuir a ingestão de proteínas",
         feedback: "Feedback: •\tProteínas são necessárias; reduzir protein é contraproducente para produção de leite.",
         tone: 'warning',
         outcome: 'bad',
@@ -564,7 +564,7 @@ const fase3Decisions: StoryDecision[] = [
         outcome: 'bad',
       },
       {
-        text: "D) Aumentar açúcares",
+        text: "D) Aumentar o consumo de açúcares",
         feedback: "Feedback: •\tAçúcares não corrigem deficiência de minerais.",
         tone: 'warning',
         outcome: 'bad',
@@ -574,7 +574,7 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q19',
     title: "Pergunta 19 - Outro mineral envolvido no equilíbrio neuromuscular",
-    question: "Outro mineral envolvido no equilíbrio neuromuscular",
+    question: "Além do cálcio, qual outro mineral está envolvido no equilíbrio neuromuscular e pode se alterar na hipocalcemia?",
     options: [
       {
         text: "A) Magnésio",
@@ -605,7 +605,7 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q20',
     title: "Pergunta 20 - Queda severa de Ca²⁺ e excitabilidade",
-    question: "Queda severa de Ca²⁺ e excitabilidade",
+    question: "Quando o cálcio sérico cai muito, o que acontece com a excitabilidade dos nervos e músculos?",
     options: [
       {
         text: "A) Diminui → fraqueza",
@@ -636,16 +636,16 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q21',
     title: "Pergunta 21 - Após o desmame, necessidade de cálcio",
-    question: "Após o desmame, necessidade de cálcio",
+    question: "Após o desmame dos filhotes, o que acontece com a necessidade de cálcio da cadela?",
     options: [
       {
-        text: "A) Diminui gradualmente",
+        text: "A) Diminui gradualmente, permitindo recuperação óssea",
         feedback: "Feedback: Correto!\nMecanismo: redução da demanda por leite permite equilíbrio positivo para reposição óssea (se dieta adequada), com normalização de PTH e calcitriol.",
         tone: 'success',
         outcome: 'best',
       },
       {
-        text: "B) Aumenta",
+        text: "B) Aumenta ainda mais",
         feedback: "Feedback: •\tApós lactação cessar, demanda diminui, não aumenta.",
         tone: 'warning',
         outcome: 'bad',
@@ -667,10 +667,10 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q22',
     title: "Pergunta 22 - Tipo de ração durante lactação",
-    question: "Tipo de ração durante lactação",
+    question: "Durante a lactação, qual tipo de ração é mais adequada para {{dogName}}?",
     options: [
       {
-        text: "A) Ração de manutenção",
+        text: "A) Ração de manutenção, comum para cães adultos",
         feedback: "Feedback: •\tNão fornece níveis elevados de cálcio, fósforo e energia necessários.",
         tone: 'warning',
         outcome: 'bad',
@@ -698,7 +698,7 @@ const fase3Decisions: StoryDecision[] = [
   {
     id: 'fase3-q23',
     title: "Pergunta 23 - Nutriente que ajuda absorção de cálcio",
-    question: "Nutriente que ajuda absorção de cálcio",
+    question: "Para ajudar na absorção adequada do cálcio presente na ração, é importante que a dieta de {{dogName}} também contenha:",
     options: [
       {
         text: "A) Vitamina D",
@@ -883,11 +883,11 @@ export const phaseTragicEndings: Record<'fase1' | 'fase2' | 'fase3', StoryEnding
     sections: [
       {
         heading: 'Manhã silenciosa',
-        body: 'A manhã que começou estranha termina em silêncio. Mel, já fraca e pedindo ajuda com o olhar, não recebe as respostas de que precisava. Sua condição piora rápido demais. Os funcionários tentam acudir, mas tudo acontece como um sussurro que se apaga.',
+        body: 'A manhã que começou estranha termina em silêncio. {{dogName}}, já fraca e pedindo ajuda com o olhar, não recebe as respostas de que precisava. Sua condição piora rápido demais. Os funcionários tentam acudir, mas tudo acontece como um sussurro que se apaga.',
       },
       {
         heading: 'Colapso lento',
-        body: 'Sem o conhecimento que poderia ter guiado as primeiras decisões, Mel sucumbe à queda de cálcio que lentamente consumia sua força.',
+        body: 'Sem o conhecimento que poderia ter guiado as primeiras decisões, {{dogName}} sucumbe à queda de cálcio que lentamente consumia sua força.',
       },
       {
         heading: 'O peso do vazio',
@@ -902,7 +902,7 @@ export const phaseTragicEndings: Record<'fase1' | 'fase2' | 'fase3', StoryEnding
     sections: [
       {
         heading: 'Gestação interrompida',
-        body: 'O segredo revelado na segunda fase não trouxe tempo para agir. Mel, gestante e enfraquecida, luta com tudo o que tem, mas o desequilíbrio em seu corpo vence a batalha antes que você consiga ajudá-la do jeito certo.',
+        body: 'O segredo revelado na segunda fase não trouxe tempo para agir. {{dogName}}, gestante e enfraquecida, luta com tudo o que tem, mas o desequilíbrio em seu corpo vence a batalha antes que você consiga ajudá-la do jeito certo.',
       },
       {
         heading: 'Silêncio antes do luto',
@@ -921,7 +921,7 @@ export const phaseTragicEndings: Record<'fase1' | 'fase2' | 'fase3', StoryEnding
     sections: [
       {
         heading: 'Madrugada de luto',
-        body: 'A madrugada que deveria celebrar vida se transforma em luto. Você chega ao ninho tarde demais. Mel, exausta pela hipocalcemia e pelo esforço da maternidade, não resiste. Ela lutou até o último instante para proteger seus filhotes, mas seu corpo não aguentou.',
+        body: 'A madrugada que deveria celebrar vida se transforma em luto. Você chega ao ninho tarde demais. {{dogName}}, exausta pela hipocalcemia e pelo esforço da maternidade, não resiste. Ela lutou até o último instante para proteger seus filhotes, mas seu corpo não aguentou.',
       },
       {
         heading: 'Filhotes sem amparo',
@@ -929,7 +929,7 @@ export const phaseTragicEndings: Record<'fase1' | 'fase2' | 'fase3', StoryEnding
       },
       {
         heading: 'Responsabilidade pesada',
-        body: 'Um a um, os filhotes se vão, silenciosamente. E você fica ali, parado, cercado pelo que poderia ter sido uma história de esperança. A vida de Mel e de sua ninhada estava em suas mãos. Mas o conhecimento que salvaria todos eles não foi lembrado a tempo.',
+        body: 'Um a um, os filhotes se vão, silenciosamente. E você fica ali, parado, cercado pelo que poderia ter sido uma história de esperança. A vida de {{dogName}} e de sua ninhada estava em suas mãos. Mas o conhecimento que salvaria todos eles não foi lembrado a tempo.',
       },
     ],
   },
