@@ -30,7 +30,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: npm
 
       - name: Cache Next.js build
         uses: actions/cache@v4
@@ -40,10 +40,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Next.js (output: export)
+      - name: "Build Next.js (output: export)"
         run: npm run build
 
       - name: Setup Pages
@@ -53,7 +50,7 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           # Pasta gerada pelo Next quando usa `output: 'export'`
-          path: './out'
+          path: ./out
 
   deploy:
     environment:
