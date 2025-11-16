@@ -78,6 +78,19 @@ export default function StoryPage() {
     }
   };
 
+  const GetClassNames = (index: number,option: StoryOption) => {
+    let classNames = `story-option-button`;
+    if (selectedOptionIndex !== null) {
+      if(selectedOptionIndex === index) {
+        classNames += ` selected ${toneClass(option.tone)}`;
+      }
+      else if(option.tone == 'success') {
+        classNames += ` ${toneClass(option.tone)}`;
+      }
+    }
+    return classNames;
+  }
+
   const handleNext = () => {
     if (selectedOptionIndex === null) {
       setNavigationError('Escolha uma opção antes de continuar!');
@@ -146,9 +159,7 @@ export default function StoryPage() {
               <button
                 key={`${currentDecision.id}-${index}`}
                 type="button"
-                className={`story-option-button ${
-                  selectedOptionIndex === index ? `selected ${toneClass(option.tone)}` : ''
-                }`}
+                className={GetClassNames(index, option)}
                 onClick={() => handleOptionSelect(option, index)}
               >
                 {withDogName(option.text, dogName)}
