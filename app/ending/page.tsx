@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useGame } from '@/contexts/GameContext';
 import { buildEndingViewData, parseEndingContext } from '@/lib/endingUtils';
@@ -17,7 +17,7 @@ function toneClass(tone: string) {
   return `tone-${tone}`;
 }
 
-export default function EndingPage() {
+function EndingContent() {
   const { state, resetGame } = useGame();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -78,5 +78,13 @@ export default function EndingPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function EndingPage() {
+  return (
+    <Suspense fallback={null}>
+      <EndingContent />
+    </Suspense>
   );
 }
