@@ -31,12 +31,8 @@ export function determineEndingKey(storyStats: StoryStats, failedPhases: Failure
     failureDetails?.outcome === 'critical' ? 'tragic' : failureDetails ? 'bad' : null;
 
   const defaultEndingKey =
-    storyStats.criticalMistakes > 0
-      ? 'tragic'
-      : storyStats.totalCorrect === storyStats.totalDecisions && storyStats.totalDecisions > 0
+    storyStats.totalCorrect === storyStats.totalDecisions && storyStats.totalDecisions > 0
       ? 'happy'
-      : storyStats.majorMistakes > 0 || storyStats.totalDecisions === 0
-      ? 'partial'
       : 'partial';
 
   return forcedEndingKey ?? defaultEndingKey;

@@ -32,6 +32,7 @@ export default function StoryPage() {
   const [hasPhaseFailure, setHasPhaseFailure] = useState(false);
   const [phaseFailureOutcome, setPhaseFailureOutcome] = useState<StoryOutcome | null>(null);
   const [phaseFailureRecorded, setPhaseFailureRecorded] = useState(false);
+  const [phaseMistakes, setPhaseMistakes] = useState(0);
 
   const currentPhase = useMemo(() => storyPhases[phaseIndex], [phaseIndex]);
   const currentDecision = useMemo(
@@ -64,6 +65,7 @@ export default function StoryPage() {
     setHasPhaseFailure(false);
     setPhaseFailureOutcome(null);
     setPhaseFailureRecorded(false);
+    setPhaseMistakes(0);
   };
 
   useEffect(() => {
@@ -87,15 +89,14 @@ export default function StoryPage() {
     registerStoryOutcome(option.outcome);
 
     if (option.outcome === 'bad' || option.outcome === 'critical') {
-      setHasPhaseFailure(true);
-      setPhaseFailureOutcome(prevOutcome => {
-        if (!prevOutcome) {
-          return option.outcome;
-        }
-        if (prevOutcome === 'critical' || option.outcome === 'critical') {
-          return 'critical';
-        }
-        return prevOutcome;
+      setPhaseMistakes(prev => {
+        const next = prev + 1;
+        if(next >= 2)
+           {
+            setPhaseFailureOutcome(next >= 2 ? 'critical' : 'bad');
+            setHasPhaseFailure(true);
+           }
+        return next;
       });
     }
   };
@@ -147,7 +148,7 @@ export default function StoryPage() {
     }
 
     setSelectedOptionIndex(null);
-    setFeedback('');
+    setFeedback(''); 
     setFeedbackTone('neutral');
   };
   const progressText = `Fase ${phaseIndex + 1} de ${storyPhases.length} · Pergunta ${
