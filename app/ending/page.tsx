@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useGame } from '@/contexts/GameContext';
-import { storyEndings, storyPhases, phaseTragicEndings } from '@/data/storyData';
+import { buildEndingViewData, parseEndingContext } from '@/lib/endingUtils';
 
 const dogDefaultName = 'Mel';
 
@@ -14,73 +16,65 @@ function withDogName(value: string, dogName: string) {
 function toneClass(tone: string) {
   return `tone-${tone}`;
 }
+
 export default function EndingPage() {
   const { state, resetGame } = useGame();
-  const dogName = state.dogName || dogDefaultName;
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const queryString = searchParams.toString();
+  const hasQueryParams = Boolean(queryString);
+  const queryContext = hasQueryParams ? parseEndingContext(searchParams) : null;
 
-  const failureDetails = state.failedPhases[state.failedPhases.length - 1];
-  const failedPhase = failureDetails
-    ? storyPhases.find(phase => phase.id === failureDetails.phaseId)
-    : null;
+  useEffect(() => {
+    if (!hasQueryParams) {
+      router.replace('/Cuide-da-ninhada/');
+    }
+  }, [hasQueryParams, router]);
 
-  const forcedEndingKey = failureDetails
-    ? failureDetails.outcome === 'critical'
-      ? 'tragic'
-      : 'bad'
-    : null;
+  const endingContext = queryContext ?? {
+    dogName: state.dogName,
+    storyStats: state.storyStats,
+    failedPhases: state.failedPhases,
+  };
 
-  const defaultEndingKey =
-    state.storyStats.criticalMistakes > 0
-      ? 'tragic'
-      : state.storyStats.totalCorrect === state.storyStats.totalDecisions &&
-        state.storyStats.totalDecisions > 0
-      ? 'happy'
-      : state.storyStats.majorMistakes > 0 || state.storyStats.totalDecisions === 0
-      ? 'partial'
-      : 'partial';
-  const endingKey = forcedEndingKey ?? defaultEndingKey;
-  const failureLabel = failureDetails
-    ? failureDetails.outcome === 'critical'
-      ? 'Falha crítica'
-      : 'Falha na fase'
-    : null;
-
-  const forcedPhaseEnding = failureDetails
-    ? phaseTragicEndings[failureDetails.phaseId as keyof typeof phaseTragicEndings]
-    : null;
-
-  const ending = forcedPhaseEnding ?? storyEndings[endingKey];
+  const endingData = buildEndingViewData(endingContext);
+  const displayDogName = endingContext.dogName || dogDefaultName;
 
   return (
     <main className="game-container">
       <section className="screen story-screen active">
         <div className="story-ending">
-          <h2 className="story-title">{withDogName(ending.title, dogName)}</h2>
-          <div className={`story-ending-highlight ${toneClass(ending.highlightTone)}`}>
-            {withDogName(ending.highlight, dogName)}
+          <h2 className="story-title">{withDogName(endingData.ending.title, displayDogName)}</h2>
+          <div className={`story-ending-highlight ${toneClass(endingData.ending.highlightTone)}`}>
+            {withDogName(endingData.ending.highlight, displayDogName)}
           </div>
-          {failedPhase && failureLabel && (
+          {endingData.failedPhase && endingData.failureLabel && (
             <p className="story-ending-phase-note">
-              {failureLabel}: {failedPhase.title}
+              {endingData.failureLabel}: {endingData.failedPhase.title}
             </p>
           )}
           <div className="story-ending-details">
-            {ending.sections.map(section => (
+            {endingData.ending.sections.map(section => (
               <div className="story-ending-section" key={section.heading}>
                 <h3>{section.heading}</h3>
-                <p>{withDogName(section.body, dogName)}</p>
+                <p>{withDogName(section.body, displayDogName)}</p>
               </div>
             ))}
           </div>
           <div className="story-ending-stats">
             <div>
-              <strong>Decisões corretas:</strong> {state.storyStats.totalCorrect} /{' '}
-              {state.storyStats.totalDecisions}
+              <strong>Decisoes corretas:</strong> {endingData.storyStats.totalCorrect} /{' '}
+              {endingData.storyStats.totalDecisions}
             </div>
           </div>
-          <Link href="/" className="pixel-btn" style={{padding: 0, marginTop: 15}} onClick={() => resetGame()}>
-              Voltar ao Menu
-            </Link>
+          <Link
+            href="/Cuide-da-ninhada"
+            className="pixel-btn"
+            style={{ padding: 0, marginTop: 15 }}
+            onClick={() => resetGame()}
+          >
+            Voltar ao Menu
+          </Link>
         </div>
       </section>
     </main>

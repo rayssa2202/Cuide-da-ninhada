@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useGame } from '@/contexts/GameContext';
 import { storyPhases } from '@/data/storyData';
+import { serializeEndingContext } from '@/lib/endingUtils';
 import type { StoryOption, StoryTone, StoryOutcome } from '@/lib/types';
 
 const dogDefaultName = 'Mel';
@@ -37,6 +38,27 @@ export default function StoryPage() {
     () => currentPhase.decisions[decisionIndex],
     [currentPhase, decisionIndex]
   );
+
+  const buildFailedPhases = () => {
+    const safeFailedPhases = [...state.failedPhases];
+    if (
+      phaseFailureOutcome &&
+      !safeFailedPhases.some(failure => failure.phaseId === currentPhase.id)
+    ) {
+      safeFailedPhases.push({ phaseId: currentPhase.id, outcome: phaseFailureOutcome });
+    }
+    return safeFailedPhases;
+  };
+
+  const buildEndingUrl = () => {
+    const queryString = serializeEndingContext({
+      dogName,
+      storyStats: state.storyStats,
+      failedPhases: buildFailedPhases(),
+    });
+
+    return `/ending?${queryString}`;
+  };
 
   const resetPhaseFailureState = () => {
     setHasPhaseFailure(false);
@@ -108,12 +130,12 @@ export default function StoryPage() {
           recordPhaseFailure(currentPhase.id, phaseFailureOutcome ?? 'bad');
           setPhaseFailureRecorded(true);
         }
-        router.push('/ending');
+        router.push(buildEndingUrl());
         return;
       }
 
       if (isLastPhase) {
-        router.push('/ending');
+        router.push(buildEndingUrl());
         return;
       }
 
