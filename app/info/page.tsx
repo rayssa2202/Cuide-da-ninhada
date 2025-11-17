@@ -48,12 +48,13 @@ export default function InfoPage() {
           <p>
             Durante a gestação, os filhotes em desenvolvimento precisam de enormes quantidades de cálcio para formar ossos e dentes, o que acaba reduzindo o cálcio circulante da mãe.
           </p>
-          <p>
-            <strong>🎯 Sua missão:</strong> Ajudar <span className="dog-name-placeholder">{dogName}</span> a recuperar os níveis normais de cálcio!
-          </p>
         </div>
-        <button type="button" className="pixel-btn" onClick={() => router.push('/story')}>
-          ➡️ PRÓXIMA ETAPA
+        <button
+          type="button"
+          className="pixel-btn"
+          onClick={() => router.push('/contexto')}
+        >
+          Proxima Etapa 🚀
         </button>
       </section>
     </main>
