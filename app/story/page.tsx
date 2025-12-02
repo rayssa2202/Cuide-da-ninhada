@@ -32,7 +32,8 @@ export default function StoryPage() {
   const [hasPhaseFailure, setHasPhaseFailure] = useState(false);
   const [phaseFailureOutcome, setPhaseFailureOutcome] = useState<StoryOutcome | null>(null);
   const [phaseFailureRecorded, setPhaseFailureRecorded] = useState(false);
-  const [phaseMistakes, setPhaseMistakes] = useState(0);
+  const [, setPhaseMistakes] = useState(0);
+  const [isIntroVisible, setIsIntroVisible] = useState(true);
 
   const currentPhase = useMemo(() => storyPhases[phaseIndex], [phaseIndex]);
   const currentDecision = useMemo(
@@ -114,6 +115,14 @@ export default function StoryPage() {
     return classNames;
   }
 
+  const handleBeginPhase = () => {
+    setIsIntroVisible(false);
+    setNavigationError(null);
+    setSelectedOptionIndex(null);
+    setFeedback('');
+    setFeedbackTone('neutral');
+  };
+
   const handleNext = () => {
     if (selectedOptionIndex === null) {
       setNavigationError('Escolha uma opção antes de continuar!');
@@ -140,6 +149,7 @@ export default function StoryPage() {
         return;
       }
 
+      setIsIntroVisible(true);
       setPhaseIndex(phaseIndex + 1);
       setDecisionIndex(0);
       resetPhaseFailureState();
@@ -151,6 +161,7 @@ export default function StoryPage() {
     setFeedback(''); 
     setFeedbackTone('neutral');
   };
+  const introProgressText = `Fase ${phaseIndex + 1} de ${storyPhases.length} · Introdução`;
   const progressText = `Fase ${phaseIndex + 1} de ${storyPhases.length} · Pergunta ${
     decisionIndex + 1
   } de ${currentPhase.decisions.length}`;
@@ -160,51 +171,61 @@ export default function StoryPage() {
       <section className="screen story-screen active">
         <div className="story-engine">
           <h2 className="story-title">{withDogName(currentPhase.title, dogName)}</h2>
-          <div className="story-phase-intro">
-            {currentPhase.intro.map(paragraph => (
-              <p key={paragraph}>{withDogName(paragraph, dogName)}</p>
-            ))}
-          </div>
+          {isIntroVisible ? (
+            <>
+              <div className="story-phase-intro">
+                {currentPhase.intro.paragraphs.map((paragraph, index) => (
+                  <p key={`intro-${index}`}>{withDogName(paragraph, dogName)}</p>
+                ))}
+              </div>
+              <div className="story-progress">{introProgressText}</div>
+              <div className="story-navigation">
+                <button type="button" className="pixel-btn" onClick={handleBeginPhase}>
+                  🚀 Iniciar perguntas
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="story-progress">{progressText}</div>
 
-          <div className="story-progress">{progressText}</div>
+              <div className="story-decision">
+                <h3 className="story-decision-title">{withDogName(currentDecision.title, dogName)}</h3>
+                {currentDecision.question && (
+                  <p className="story-decision-description">{withDogName(currentDecision.question, dogName)}</p>
+                )}
+              </div>
 
-          <div className="story-decision">
-            <h3 className="story-decision-title">{withDogName(currentDecision.title, dogName)}</h3>
-            {
-              currentDecision.question && (
-                <p className="story-decision-description">{withDogName(currentDecision.question, dogName)}</p>
-              )
-            }
-          </div>
+              <div className="story-options" role="list">
+                {currentDecision.options.map((option, index) => (
+                  <button
+                    key={`${currentDecision.id}-${index}`}
+                    type="button"
+                    className={GetClassNames(index, option)}
+                    onClick={() => handleOptionSelect(option, index)}
+                  >
+                    {withDogName(option.text, dogName)}
+                  </button>
+                ))}
+              </div>
 
-          <div className="story-options" role="list">
-            {currentDecision.options.map((option, index) => (
-              <button
-                key={`${currentDecision.id}-${index}`}
-                type="button"
-                className={GetClassNames(index, option)}
-                onClick={() => handleOptionSelect(option, index)}
-              >
-                {withDogName(option.text, dogName)}
-              </button>
-            ))}
-          </div>
+              {feedback && (
+                <div className={`story-feedback-container ${toneClass(feedbackTone)}`} aria-live="polite">
+                  {feedback.split('\n').map((line, idx) => (
+                    <p key={idx}>{line}</p>
+                  ))}
+                </div>
+              )}
 
-          {feedback && (
-            <div className={`story-feedback-container ${toneClass(feedbackTone)}`} aria-live="polite">
-              {feedback.split('\n').map((line, idx) => (
-                <p key={idx}>{line}</p>
-              ))}
-            </div>
+              {navigationError && <p className="error-text">{navigationError}</p>}
+
+              <div className="story-navigation">
+                <button type="button" className="pixel-btn" onClick={handleNext}>
+                  ➡️ Próxima etapa
+                </button>
+              </div>
+            </>
           )}
-
-          {navigationError && <p className="error-text">{navigationError}</p>}
-
-          <div className="story-navigation">
-            <button type="button" className="pixel-btn" onClick={handleNext}>
-              ➡️ Próxima etapa
-            </button>
-          </div>
         </div>
       </section>
     </main>

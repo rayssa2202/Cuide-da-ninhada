@@ -24,10 +24,14 @@ export interface StoryDecision {
   options: StoryOption[];
 }
 
+export interface StoryPhaseIntro {
+  paragraphs: string[];
+}
+
 export interface StoryPhase {
   id: string;
   title: string;
-  intro: string[];
+  intro: StoryPhaseIntro;
   decisions: StoryDecision[];
 }
 

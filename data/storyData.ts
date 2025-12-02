@@ -764,34 +764,40 @@ export const storyPhases: StoryPhase[] = [
   {
     id: 'fase1',
     title: '📘 Fase 1 – O Sinal de Alerta',
-    intro: [
-      '{{dogName}} amanhece estranha: quieta, desconfortável, buscando atenção.',
-      'Os funcionários percebem que algo está errado e pedem sua ajuda.',
-      'Durante a avaliação, enquanto tenta entender o que está acontecendo, uma verdade preocupante se revela diante de você:',
-      '🔥 {{dogName}} está com o cálcio perigosamente baixo. A vida dela agora depende da sua capacidade de lembrar tudo o que sabe sobre hipocalcemia.',
-    ],
+    intro: {
+      paragraphs: [
+        '{{dogName}} amanhece estranha: quieta, desconfortável, buscando atenção.',
+        'Os funcionários percebem que algo está errado e pedem sua ajuda.',
+        'Durante a avaliação, enquanto tenta entender o que está acontecendo, uma verdade preocupante se revela diante de você:',
+        '🔥 {{dogName}} está com o cálcio perigosamente baixo. A vida dela agora depende da sua capacidade de lembrar tudo o que sabe sobre hipocalcemia.',
+      ],
+    },
     decisions: fase1Decisions,
   },
   {
     id: 'fase2',
     title: '🩺 Fase 2 – Um Novo Segredo',
-    intro: [
-      'A situação se complica de forma inesperada: {{dogName}} está grávida.',
-      'Agora, além de enfrentar a hipocalcemia, ela carrega vidas que dependem totalmente dela. Cada decisão se torna ainda mais delicada.',
-      'Para proteger {{dogName}} e seus futuros filhotes, você precisará lembrar — com precisão — o que acontece no organismo de uma cadela gestante quando os níveis de cálcio estão baixos.'
-    ],
+    intro: {
+      paragraphs: [
+        'A situação se complica de forma inesperada: {{dogName}} está grávida.',
+        'Agora, além de enfrentar a hipocalcemia, ela carrega vidas que dependem totalmente dela. Cada decisão se torna ainda mais delicada.',
+        'Para proteger {{dogName}} e seus futuros filhotes, você precisará lembrar — com precisão — o que acontece no organismo de uma cadela gestante quando os níveis de cálcio estão baixos.',
+      ],
+    },
     decisions: fase2Decisions,
   },
   {
     id: 'fase3',
     title: '🍼 Fase 3 – Lactação',
-    intro: [
-      'No silêncio da madrugada, um choro suave rompe a escuridão: {{dogName}} deu à luz.\nQuando você  chega no campus, se aproxima e encontra a ninhada — minúsculos, frágeis, totalmente indefesos, dependentes da força que a mãe já não tem.',
-      'Mas o alívio dura pouco.',
-      '🐶 A hipocalcemia ainda ameaça {{dogName}}, drenando suas energias quando ela mais precisa ser forte. E, se ela enfraquecer, todos os filhotes correm perigo.',
-      'Agora, salvar essa família não é mais uma missão individual.\nVocê precisa unir forças, compartilhar seus conhecimentos com os funcionários e os outros estudantes do campus, e criar um revezamento dedicado que garanta cuidado, segurança e vigilância constante.',
-      'A sobrevivência de {{dogName}} e de seus filhotes está nas mãos de todos vocês!'
-    ],
+    intro: {
+      paragraphs: [
+        'No silêncio da madrugada, um choro suave rompe a escuridão: {{dogName}} deu à luz.\nQuando você  chega no campus, se aproxima e encontra a ninhada — minúsculos, frágeis, totalmente indefesos, dependentes da força que a mãe já não tem.',
+        'Mas o alívio dura pouco.',
+        '🐶 A hipocalcemia ainda ameaça {{dogName}}, drenando suas energias quando ela mais precisa ser forte. E, se ela enfraquecer, todos os filhotes correm perigo.',
+        'Agora, salvar essa família não é mais uma missão individual.\nVocê precisa unir forças, compartilhar seus conhecimentos com os funcionários e os outros estudantes do campus, e criar um revezamento dedicado que garanta cuidado, segurança e vigilância constante.',
+        'A sobrevivência de {{dogName}} e de seus filhotes está nas mãos de todos vocês!',
+      ],
+    },
     decisions: fase3Decisions,
   },
 ];
