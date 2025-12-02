@@ -5,11 +5,16 @@ import femaleNames from '@/data/femaleNames.json';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { useGame } from '@/contexts/GameContext';
+import CarameloImg from '@/public/assets/Caramelo.png';
+import PastorImg from '@/public/assets/Pastor.png';
+import PincherImg from '@/public/assets/Pincher.png';
+import Image, { StaticImageData } from 'next/image';
 
-const characterOptions: { size: CharacterSize; breed: string; gradient: string, sprite: string }[] = [
-  { size: 'small', breed: 'Pincher', gradient: 'linear-gradient(135deg, #8B4513, #A0522D)', sprite: '🐕' },
-  { size: 'medium', breed: 'Caramelo', gradient: 'linear-gradient(135deg, #D2691E, #CD853F)', sprite: '🐕' },
-  { size: 'large', breed: 'Pastor Alemão', gradient: 'linear-gradient(135deg, #654321, #8B4513)', sprite: '🐕' },
+
+const characterOptions: { size: CharacterSize; breed: string; gradient: string, sprite: StaticImageData }[] = [
+  { size: 'small', breed: 'Pincher', gradient: 'linear-gradient(135deg, #8B4513, #A0522D)', sprite: PincherImg },
+  { size: 'medium', breed: 'Caramelo', gradient: 'linear-gradient(135deg, #8B4513, #A0522D)', sprite: CarameloImg },
+  { size: 'large', breed: 'Pastor Alemão', gradient: 'linear-gradient(135deg, #8B4513, #A0522D)', sprite: PastorImg },
 ];
 
 export default function CharacterSelectionPage() {
@@ -82,7 +87,7 @@ export default function CharacterSelectionPage() {
                 tabIndex={0}
               >
                 <div className="dog-sprite" style={{ background: option.gradient }}>
-                  {option.sprite}
+                  <Image src={option.sprite} alt={option.breed} width={80} height={80} />
                 </div>
                 <div className="character-info">
                   <h3>{option.breed}</h3>

@@ -12,6 +12,7 @@ const nextConfig = {
   // opcional, mas costuma ajudar em hosts estáticos
   // (gera /about/index.html em vez de /about.html)
   trailingSlash: true,
+  images:{ unoptimized: true }
 };
 
 module.exports = nextConfig;
